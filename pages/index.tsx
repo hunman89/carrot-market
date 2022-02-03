@@ -4,7 +4,7 @@ const Home: NextPage = () => {
   return (
     <div className=" bg-slate-400 py-20 px-20 grid xl:place-content-center gap-10 lg:grid-cols-2 xl:grid-cols-3 min-h-screen">
       <div className="bg-white dark:bg-black flex flex-col justify-between p-6 rounded-3xl shadow-xl">
-        <span className="dark:text-white font-semibold text-3xl">
+        <span className="dark:text-white font-semibold text-[100px] bg-[url('/vercel.svg')]">
           Select Item
         </span>
         <ul>
