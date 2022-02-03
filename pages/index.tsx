@@ -2,11 +2,11 @@ import type { NextPage } from "next";
 
 const Home: NextPage = () => {
   return (
-    <div className=" bg-slate-400 py-20 px-20 grid gap-10 min-h-screen">
-      <div className="bg-white p-6 rounded-3xl shadow-xl">
+    <div className=" bg-slate-400 py-20 px-20 grid xl:place-content-center gap-10 lg:grid-cols-2 xl:grid-cols-3 min-h-screen">
+      <div className="bg-white flex flex-col justify-between p-6 rounded-3xl shadow-xl">
         <span className=" font-semibold text-3xl">Select Item</span>
         <ul>
-          {[1, 2, 3, 4, 5].map((i) => (
+          {[1, 2].map((i) => (
             <div
               key={i}
               className="flex justify-between my-2 odd:bg-blue-50 even:bg-yellow-50"
@@ -14,13 +14,6 @@ const Home: NextPage = () => {
               <span className=" text-gray-500">Gray Chair</span>
               <span className="font-semibold">$19</span>
             </div>
-          ))}
-        </ul>
-        <ul>
-          {["a", "b", "c", ""].map((c, i) => (
-            <li className="bg-red-500 py-2 empty:hidden" key={i}>
-              {c}
-            </li>
           ))}
         </ul>
         <div className="flex justify-between mt-2 pt-2 border-t-2 border-dashed">
@@ -32,7 +25,7 @@ const Home: NextPage = () => {
         </button>
       </div>
       <div className="bg-white overflow-hidden rounded-3xl shadow-xl group">
-        <div className="bg-blue-500 p-6 pb-14">
+        <div className=" portrait:bg-indigo-500 landscape:bg-teal-500 p-6 pb-14 xl:pb-44">
           <span className="text-white text-2xl">Profile</span>
         </div>
         <div className=" bg-white rounded-3xl p-6 relative -top-5">
@@ -53,7 +46,7 @@ const Home: NextPage = () => {
           </div>
         </div>
       </div>
-      <div className="bg-white p-6 rounded-3xl shadow-xl">
+      <div className="bg-white p-6 rounded-3xl shadow-xl lg:col-span-2 xl:col-span-1">
         <div className="flex mb-5 justify-between items-center">
           <span>←</span>
           <div className="space-x-3">
@@ -88,37 +81,6 @@ const Home: NextPage = () => {
             Add to cart
           </div>
         </div>
-      </div>
-      <div className="flex flex-col space-y-2 p-5 bg-lime-400 focus-within:bg-yellow-600">
-        <input
-          type="text"
-          required
-          placeholder="Username"
-          className=" invalid:bg-red-500 valid:bg-teal-500 placeholder:text-white peer"
-        />
-        <span className="hidden peer-invalid:block peer-invalid:text-red-500">
-          this input is invalid
-        </span>
-        <span className="hidden peer-hover:block peer-hover:text-indigo-500">
-          hello
-        </span>
-        <input type="submit" value="Login" className="bg-white" />
-      </div>
-      <div className="bg-white p-6 rounded-3xl shadow-xl">
-        <details className=" select-none open:text-white open:bg-indigo-400">
-          <summary className="cursor-pointer">What is my fav. food.</summary>
-          <span>kimchi</span>
-        </details>
-        <ul className=" list-disc marker:text-teal-400">
-          <li>hi</li>
-          <li>hi</li>
-          <li>hi</li>
-        </ul>
-        <input
-          type="file"
-          className=" file:transition-colors file:hover:text-purple-400 file:hover:bg-white file:hover:border-2 file:cursor-pointer file:border-0 file:rounded-md file:bg-indigo-500 file:px-5 file:text-white"
-        ></input>
-        <p className=" first-letter:text-7xl">fjdiaj fjdiafojdiaof djaifod</p>
       </div>
     </div>
   );
