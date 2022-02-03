@@ -104,6 +104,22 @@ const Home: NextPage = () => {
         </span>
         <input type="submit" value="Login" className="bg-white" />
       </div>
+      <div className="bg-white p-6 rounded-3xl shadow-xl">
+        <details className=" select-none open:text-white open:bg-indigo-400">
+          <summary className="cursor-pointer">What is my fav. food.</summary>
+          <span>kimchi</span>
+        </details>
+        <ul className=" list-disc marker:text-teal-400">
+          <li>hi</li>
+          <li>hi</li>
+          <li>hi</li>
+        </ul>
+        <input
+          type="file"
+          className=" file:transition-colors file:hover:text-purple-400 file:hover:bg-white file:hover:border-2 file:cursor-pointer file:border-0 file:rounded-md file:bg-indigo-500 file:px-5 file:text-white"
+        ></input>
+        <p className=" first-letter:text-7xl">fjdiaj fjdiafojdiaof djaifod</p>
+      </div>
     </div>
   );
 };
