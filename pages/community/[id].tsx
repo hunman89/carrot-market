@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Button from "../../components/button";
 import Layout from "../../components/layout";
+import TextArea from "../../components/textarea";
 
 const CommunityPostDetail: NextPage = () => {
   return (
@@ -74,14 +75,10 @@ const CommunityPostDetail: NextPage = () => {
             </div>
           </div>
         </div>
-        <div className="px-4">
-          <textarea
-            className="mt-1 shadow-sm w-full focus:ring-orange-500 rounded-md border-gray-300 focus:border-orange-500 "
-            rows={4}
-            placeholder="Answer this question!"
-          />
+        <form className="px-4">
+          <TextArea placeholder="Answer this question!" />
           <Button text="Reply" />
-        </div>
+        </form>
       </div>
     </Layout>
   );
