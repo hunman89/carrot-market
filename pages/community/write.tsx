@@ -5,7 +5,7 @@ import TextArea from "../../components/textarea";
 
 const Write: NextPage = () => {
   return (
-    <Layout canGoBack>
+    <Layout title="Write" canGoBack>
       <form className="px-4">
         <TextArea placeholder="Ask a question!" />
         <Button text="Submit" />

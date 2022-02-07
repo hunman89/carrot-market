@@ -4,7 +4,7 @@ import Message from "../../components/message";
 
 const StreamDetail: NextPage = () => {
   return (
-    <Layout canGoBack>
+    <Layout title="Stream" canGoBack>
       <div className="space-y-5 px-4">
         <div className="w-full  rounded-md shadow-sm bg-slate-500 aspect-video"></div>
         <div>

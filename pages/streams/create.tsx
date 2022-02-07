@@ -6,7 +6,7 @@ import TextArea from "../../components/textarea";
 
 const Create: NextPage = () => {
   return (
-    <Layout canGoBack>
+    <Layout title="Do Stream" canGoBack>
       <div className="px-4 space-y-5">
         <Input label="Name" name="name" />
         <Input label="Price" name="price" kind="price" />

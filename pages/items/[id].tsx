@@ -4,7 +4,7 @@ import Layout from "../../components/layout";
 
 const ItemDetail: NextPage = () => {
   return (
-    <Layout canGoBack>
+    <Layout title="Item Detail" canGoBack>
       <div className="px-4">
         <div>
           <div className="h-96 bg-gray-300" />
