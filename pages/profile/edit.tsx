@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Button from "../../components/button";
+import Input from "../../components/input";
 import Layout from "../../components/layout";
 
 const EditProfile: NextPage = () => {
@@ -22,33 +23,8 @@ const EditProfile: NextPage = () => {
             />
           </label>
         </div>
-        <div className="space-y-1">
-          <label htmlFor="email" className="text-sm font-medium text-gray-500">
-            Email address
-          </label>
-          <input
-            id="email"
-            type="email"
-            className="appearance-none w-full px-3 border border-gray-500 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-            required
-          />
-        </div>
-        <div className="space-y-1">
-          <label htmlFor="phone" className="text-sm font-medium text-gray-500">
-            Phone number
-          </label>
-          <div className="flex rounded-md shadow-sm">
-            <span className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-500 bg-gray-50 text-gray-500 select-none text-sm">
-              +82
-            </span>
-            <input
-              id="input"
-              type="number"
-              className="appearance-none w-full px-3 border border-gray-500 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
-              required
-            />
-          </div>
-        </div>
+        <Input label="Email address" name="email" required />
+        <Input label="Phone number" name="phone" required />
         <Button text="Update profile" />
       </div>
     </Layout>

@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Link from "next/link";
 import Layout from "../../components/layout";
 
 const Profile: NextPage = () => {
@@ -9,7 +10,9 @@ const Profile: NextPage = () => {
           <div className="w-16 h-16 bg-slate-300 rounded-full" />
           <div className="flex flex-col">
             <span className="font-medium text-gray-900">Steve Jebs</span>
-            <span className="text-sm text-gray-700">Edit profile &rarr;</span>
+            <Link href="/profile/edit">
+              <a className="text-sm text-gray-700">Edit profile &rarr;</a>
+            </Link>{" "}
           </div>
         </div>
         <div className="mt-10 flex justify-around">
