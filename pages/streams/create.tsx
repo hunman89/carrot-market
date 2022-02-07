@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import Button from "../../components/button";
 import Layout from "../../components/layout";
 
 const Create: NextPage = () => {
@@ -55,9 +56,7 @@ const Create: NextPage = () => {
             rows={4}
           />
         </div>
-        <button className="mt-4 w-full bg-orange-500 hover:bg-orange-600 text-white px-3 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium focus:ring-2 focus:ring-offset-2 focus:ring-orange-500 focus:outline-none">
-          Go live
-        </button>
+        <Button text="Go live" />
       </div>
     </Layout>
   );
