@@ -7,12 +7,12 @@ import TextArea from "../../components/textarea";
 const Create: NextPage = () => {
   return (
     <Layout title="Do Stream" canGoBack>
-      <div className="px-4 space-y-5">
+      <form className="px-4 space-y-5">
         <Input label="Name" name="name" />
-        <Input label="Price" name="price" kind="price" />
+        <Input label="Price" name="price" kind="price" placeholder="0.00" />
         <TextArea label="Description" name="description" />
         <Button text="Go live" />
-      </div>
+      </form>
     </Layout>
   );
 };

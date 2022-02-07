@@ -40,17 +40,21 @@ export default function Enter() {
         </div>
         <form className="flex flex-col mt-8">
           {method === "email" ? (
-            <Input label="Email address" name="email" required />
+            <Input label="Email address" name="email" type="email" required />
           ) : null}
           {method === "phone" ? (
-            <Input label="Phone number" name="phone" required />
+            <Input
+              label="Phone number"
+              name="phone"
+              type="number"
+              kind="phone"
+              required
+            />
           ) : null}
-          <Button
-            large
-            text={
-              method === "email" ? "Get login link" : "Get one-time password"
-            }
-          />
+          {method === "email" ? <Button text={"Get login link"} /> : null}
+          {method === "phone" ? (
+            <Button text={"Get one-time password"} />
+          ) : null}
         </form>
         <div className="mt-8">
           <div className=" relative">

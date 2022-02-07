@@ -31,14 +31,14 @@ export default function Input({
       ) : null}
       {kind == "phone" ? (
         <div className="flex rounded-md shadow-sm">
-          <span className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-500 bg-gray-50 text-gray-500 select-none text-sm">
+          <span className="flex items-center justify-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 select-none text-sm">
             +82
           </span>
           <input
             {...rest}
             id={name}
             type="number"
-            className="appearance-none w-full px-3 border border-gray-500 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
+            className="appearance-none w-full px-3 border border-gray-300 rounded-md rounded-l-none shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
             required
           />
         </div>
@@ -52,7 +52,6 @@ export default function Input({
             {...rest}
             id={name}
             type="text"
-            placeholder="0.00"
             className="appearance-none pl-7 w-full px-3 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-orange-500 focus:border-orange-500"
           />
           <div className=" absolute right-0 pointer-events-none pr-3 flex items-center">

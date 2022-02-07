@@ -31,8 +31,14 @@ const Upload: NextPage = () => {
             />
           </label>
         </div>
-        <Input label="Name" name="name" />
-        <Input label="Price" name="price" kind="price" />
+        <Input label="Name" name="name" required />
+        <Input
+          label="Price"
+          name="price"
+          kind="price"
+          placeholder="0.00"
+          required
+        />
         <TextArea label="Description" name="description" />
         <Button text="Upload item" />
       </div>

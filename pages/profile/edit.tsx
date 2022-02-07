@@ -6,7 +6,7 @@ import Layout from "../../components/layout";
 const EditProfile: NextPage = () => {
   return (
     <Layout title="Edit Profile" canGoBack>
-      <div className=" px-4 space-y-4">
+      <form className=" px-4 space-y-4">
         <div className="flex items-center space-x-3">
           <div className="w-14 h-14 rounded-full bg-slate-500"></div>
           <label
@@ -23,10 +23,10 @@ const EditProfile: NextPage = () => {
             />
           </label>
         </div>
-        <Input label="Email address" name="email" required />
-        <Input label="Phone number" name="phone" required />
+        <Input label="Email address" name="email" type="email" required />
+        <Input label="Phone number" name="phone" kind="phone" required />
         <Button text="Update profile" />
-      </div>
+      </form>
     </Layout>
   );
 };

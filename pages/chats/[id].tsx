@@ -10,7 +10,7 @@ const ChatDetail: NextPage = () => {
         <Message message="I want ￦20,000" reversed />
         <Message message="Crazy?" />
         <Message message="I want ￦20,000" reversed />
-        <div className="fixed w-full mx-auto max-w-md bottom-0 inset-x-0 pb-2">
+        <form className="fixed w-full mx-auto max-w-md bottom-0 inset-x-0 pb-2">
           <div className="flex relative items-center">
             <input
               type="text"
@@ -22,7 +22,7 @@ const ChatDetail: NextPage = () => {
               </button>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </Layout>
   );
