@@ -24,6 +24,7 @@ export default function Enter() {
     reset();
   };
   const onValid = (validForm: EnterForm) => {
+    if (loading) return;
     enter(validForm);
   };
   return (
