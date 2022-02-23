@@ -3,11 +3,25 @@ import Button from "@components/button";
 import Input from "@components/input";
 import Layout from "@components/layout";
 import TextArea from "@components/textarea";
+import { useForm } from "react-hook-form";
+import useMutation from "@libs/client/useMutation";
+
+interface UploadProductForm {
+  name: string;
+  price: number;
+  description: string;
+}
 
 const Upload: NextPage = () => {
+  const { register, handleSubmit } = useForm<UploadProductForm>();
+  const [uploadProduct, { loading, data }] = useMutation("/api/products");
+  const onValid = (data: UploadProductForm) => {
+    if (loading) return;
+    uploadProduct(data);
+  };
   return (
     <Layout title="Item Upload" canGoBack>
-      <div className="px-4 space-y-5">
+      <form className="px-4 space-y-5" onSubmit={handleSubmit(onValid)}>
         <div>
           <label className="w-full cursor-pointer transition-color text-gray-600 hover:text-orange-500 hover:border-orange-500 flex items-center justify-center border-2 border-dashed border-gray-300 h-48 rounded-md">
             <svg
@@ -31,17 +45,29 @@ const Upload: NextPage = () => {
             />
           </label>
         </div>
-        <Input label="Name" name="name" required />
         <Input
+          register={register("name", { required: true })}
+          label="Name"
+          name="name"
+          type="text"
+          required
+        />
+        <Input
+          register={register("price", { required: true })}
           label="Price"
           name="price"
           kind="price"
-          placeholder="0.00"
+          type="text"
           required
         />
-        <TextArea label="Description" name="description" />
-        <Button text="Upload item" />
-      </div>
+        <TextArea
+          register={register("description", { required: true })}
+          label="Description"
+          name="description"
+          required
+        />
+        <Button text={loading ? "Loading" : "Upload item"} />
+      </form>
     </Layout>
   );
 };
