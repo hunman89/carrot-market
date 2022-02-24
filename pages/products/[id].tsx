@@ -20,12 +20,14 @@ interface ItemDetailResponse {
 
 const ItemDetail: NextPage = () => {
   const router = useRouter();
-  const { data } = useSWR<ItemDetailResponse>(
+  const { data, mutate } = useSWR<ItemDetailResponse>(
     router.query.id ? `/api/products/${router.query.id}` : null
   );
   const [toggleFav] = useMutation(`/api/products/${router.query.id}/fav`);
   const onFavClick = () => {
     toggleFav({});
+    if (!data) return;
+    mutate({ ...data, isLiked: !data.isLiked }, false);
   };
   return (
     <Layout title="Item Detail" canGoBack>
@@ -110,7 +112,7 @@ const ItemDetail: NextPage = () => {
         <div className="mt-8">
           <h2 className="text-2xl font-bold text-gray-900">Similar items</h2>
           <div className="mt-6 grid grid-cols-2 gap-4">
-            {data?.relatedProducts.map((product) => (
+            {data?.relatedProducts?.map((product) => (
               <Link key={product.id} href={`/products/${product.id}`}>
                 <a>
                   <div className="h-56 w-full mb-4 bg-slate-300" />
