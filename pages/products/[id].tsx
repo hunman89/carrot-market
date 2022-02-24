@@ -28,16 +28,16 @@ const ItemDetail: NextPage = () => {
   );
   const [toggleFav] = useMutation(`/api/products/${router.query.id}/fav`);
   const onFavClick = () => {
-    toggleFav({});
     if (!data) return;
     boundMutate({ ...data, isLiked: !data.isLiked }, false);
-    unboundMutate(
-      "/api/users/me",
-      (prev: any) => ({
-        ok: !prev.ok,
-      }),
-      false
-    );
+    toggleFav({});
+    // unboundMutate(
+    //   "/api/users/me",
+    //   (prev: any) => ({
+    //     ok: !prev.ok,
+    //   }),
+    //   false
+    // );
   };
   return (
     <Layout title="Item Detail" canGoBack>

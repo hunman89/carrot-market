@@ -7,6 +7,9 @@ import FloatingButton from "../components/floating-button";
 import Item from "../components/item";
 import Layout from "../components/layout";
 
+interface ProductWithCount extends Product {
+  _count: any;
+}
 interface ProductResponse {
   ok: boolean;
   products: Product[];
@@ -28,7 +31,7 @@ const Home: NextPage = () => {
             title={product.name}
             price={product.price}
             comments={1}
-            hearts={1}
+            hearts={product._count?.favs}
           />
         ))}
         <FloatingButton href="/products/upload">
