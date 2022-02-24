@@ -1,35 +1,50 @@
 import type { NextPage } from "next";
 import Button from "@components/button";
 import Layout from "@components/layout";
+import { useRouter } from "next/router";
+import useSWR from "swr";
+import Link from "next/link";
 
 const ItemDetail: NextPage = () => {
+  const router = useRouter();
+  const { data } = useSWR(
+    router.query.id ? `/api/products/${router.query.id}` : null
+  );
   return (
     <Layout title="Item Detail" canGoBack>
       <div className="px-4">
         <div>
           <div className="h-96 bg-gray-300" />
-          <div className="flex py-3 items-center space-x-3 border-b cursor-pointer">
+
+          <div className="flex py-3 items-center space-x-3 border-b ">
             <div className="w-12 h-12 rounded-full bg-gray-300" />
             <div>
-              <p className="text-sm font-medium text-gray-700">Steve Jebs</p>
-              <p className="text-xs font-medium text-gray-500">
-                View profile &rarr;
+              <p className="text-sm font-medium text-gray-700">
+                {data?.product?.user?.name}
               </p>
+              <Link href={`/users/profiles/${data?.product?.user?.id}`}>
+                <a className="text-xs font-medium text-gray-500 cursor-pointer">
+                  View profile &rarr;
+                </a>
+              </Link>
             </div>
           </div>
           <div className="mt-10">
-            <h1 className="text-3xl font-bold text-gray-900">Galaxy S50</h1>
-            <p className="text-3xl mt-3 text-gray-900">$140</p>
-            <p className="text-base my-6 text-gray-700">
-              My money&apos;s in that office, right? If she start giving me some
-              bullshit about it ain&apos;t there, and we got to go someplace
-              else and get it, I&apos;m gonna shoot you in the head then and
-              there. Then I&apos;m gonna shoot that bitch in the kneecaps, find
-              out where my goddamn money is. She gonna tell me too. Hey, look at
-              me when I&apos;m talking to you, motherfucker. You listen: we go
-              in there, and that ni**a Winston or anybody else is in there, you
-              the first motherfucker to get shot. You understand?
-            </p>
+            {data ? (
+              <>
+                <h1 className="text-3xl font-bold text-gray-900">
+                  {data?.product?.name}
+                </h1>
+                <p className="text-3xl mt-3 text-gray-900">
+                  ${data?.product?.price}
+                </p>
+                <p className="text-base my-6 text-gray-700">
+                  {data?.product?.description}
+                </p>
+              </>
+            ) : (
+              <p className="text-base my-6 text-gray-700">Loading...</p>
+            )}
             <div className="flex items-center justify-between space-x-2">
               <Button text="Talk to seller" />
               <button className="p-3 rounded-md flex items-center justify-center text-gray-400 hover:text-gray-700 hover:bg-gray-100">
