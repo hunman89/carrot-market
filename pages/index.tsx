@@ -8,11 +8,11 @@ import Item from "../components/item";
 import Layout from "../components/layout";
 
 interface ProductWithCount extends Product {
-  _count: any;
+  _count: { favs: number };
 }
 interface ProductResponse {
   ok: boolean;
-  products: Product[];
+  products: ProductWithCount[];
 }
 
 const Home: NextPage = () => {
