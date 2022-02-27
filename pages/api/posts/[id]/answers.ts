@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import withHandler, { ResponseType } from "@libs/server/withHandler";
 import client from "@libs/server/client";
 import { withApiSession } from "@libs/server/withSession";
+import { truncate } from "fs";
 
 async function handler(
   req: NextApiRequest,
@@ -10,39 +11,39 @@ async function handler(
   const {
     query: { id },
     session: { user },
+    body: { answer },
   } = req;
-  const alreadyExists = await client.fav.findFirst({
+  /* const post = await client.post.findUnique({
     where: {
-      productId: +id.toString(),
-      userId: user?.id,
+      id: +id.toString(),
     },
     select: {
       id: true,
     },
   });
-  if (alreadyExists) {
-    await client.fav.delete({
-      where: {
-        id: alreadyExists.id,
-      },
-    });
-  } else {
-    await client.fav.create({
-      data: {
-        user: {
-          connect: {
-            id: user?.id,
-          },
-        },
-        product: {
-          connect: {
-            id: +id.toString(),
-          },
+  if (!post){
+      //404
+  } */
+  const newAnswer = await client.answer.create({
+    data: {
+      user: {
+        connect: {
+          id: user?.id,
         },
       },
-    });
-  }
-  res.json({ ok: true });
+      post: {
+        connect: {
+          id: +id.toString(),
+        },
+      },
+      answer,
+    },
+  });
+  console.log(newAnswer);
+  res.json({
+    ok: true,
+    answer: newAnswer,
+  });
 }
 
 export default withApiSession(withHandler({ methods: ["POST"], handler }));
