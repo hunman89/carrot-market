@@ -7,7 +7,7 @@ import FloatingButton from "../components/floating-button";
 import Item from "../components/item";
 import Layout from "../components/layout";
 
-interface ProductWithCount extends Product {
+export interface ProductWithCount extends Product {
   _count: { favs: number };
 }
 interface ProductResponse {
@@ -30,7 +30,6 @@ const Home: NextPage = () => {
             id={product.id}
             title={product.name}
             price={product.price}
-            comments={1}
             hearts={product._count?.favs}
           />
         ))}
