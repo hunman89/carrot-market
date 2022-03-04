@@ -2,18 +2,24 @@ import type { NextPage } from "next";
 import Link from "next/link";
 import FloatingButton from "@components/floating-button";
 import Layout from "@components/layout";
+import { Stream } from "@prisma/client";
+import useSWR from "swr";
+
+interface StreamsResponse {
+  ok: boolean;
+  streams: Stream[];
+}
 
 const Streams: NextPage = () => {
+  const { data } = useSWR<StreamsResponse>(`/api/streams`);
   return (
     <Layout title="Streams" hasTabBar>
       <div className="divide-y-2 space-y-4">
-        {[1, 2, 3, 4, 5].map((_, i) => (
-          <Link key={i} href={`/streams/${i}`}>
+        {data?.streams.map((stream) => (
+          <Link key={stream.id} href={`/streams/${stream.id}`}>
             <a className="block pt-4 px-4">
               <div className="w-full rounded-md shadow-sm bg-slate-500 aspect-video"></div>
-              <h3 className="text-gray-700 text-lg mt-2">
-                Let&apos;s try potatos
-              </h3>
+              <h3 className="text-gray-700 text-lg mt-2">{stream.name}</h3>
             </a>
           </Link>
         ))}

@@ -28,8 +28,10 @@ async function handler(
       ok: true,
       stream,
     });
-  }
-  if (req.method === "GET") {
+  } else if (req.method === "GET") {
+    const streams = await client.stream.findMany();
+    // need pagnation
+    res.json({ ok: true, streams });
   }
 }
 
