@@ -45,9 +45,14 @@ const EditProfile: NextPage = () => {
           "Email OR Phone number are required. you need to choose the one.,",
       });
     }
-    if (avatar && avatar.length > 0) {
-      const cfRequest = await (await fetch(`/api/files`)).json();
-      // upload file to url
+    if (avatar && avatar.length > 0 && user) {
+      const { id, uploadURL } = await (await fetch(`/api/files`)).json();
+      const form = new FormData();
+      form.append("file", avatar[0], user?.id + "");
+      await fetch(uploadURL, {
+        method: "POST",
+        body: form,
+      });
       editProfile({
         email,
         phone,
