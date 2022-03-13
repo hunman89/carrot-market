@@ -35,7 +35,7 @@ const EditProfile: NextPage = () => {
     if (user?.phone) setValue("phone", user.phone);
     if (user?.name) setValue("name", user.name);
     if (user?.avatar)
-      setavatarPreview(
+      setAvatarPreview(
         `https://imagedelivery.net/aSbksvJjax-AUC7qVnaC4A/${user?.avatar}/public`
       );
   }, [user, setValue]);
@@ -76,12 +76,12 @@ const EditProfile: NextPage = () => {
       setError("formErrors", { message: data.error });
     }
   }, [data, setError]);
-  const [avatarPreview, setavatarPreview] = useState("");
+  const [avatarPreview, setAvatarPreview] = useState("");
   const avatar = watch("avatar");
   useEffect(() => {
     if (avatar && avatar.length > 0) {
       const file = avatar[0];
-      setavatarPreview(URL.createObjectURL(file));
+      setAvatarPreview(URL.createObjectURL(file));
     }
   }, [avatar]);
   return (
