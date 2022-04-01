@@ -3,9 +3,9 @@ import { Product } from "@prisma/client";
 import type { NextPage } from "next";
 import Head from "next/head";
 import useSWR from "swr";
-import FloatingButton from "../components/floating-button";
-import Item from "../components/item";
-import Layout from "../components/layout";
+import FloatingButton from "@components/floating-button";
+import Item from "@components/item";
+import Layout from "@components/layout";
 
 export interface ProductWithCount extends Product {
   _count: { favs: number };
