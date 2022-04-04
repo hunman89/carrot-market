@@ -41,7 +41,7 @@ const ItemDetail: NextPage = () => {
     // );
   };
   return (
-    <Layout title="Item Detail" canGoBack>
+    <Layout title="Item Detail" seoTitle="Product detail" canGoBack>
       <div className="px-4">
         <div>
           <div className=" relative pb-80">
