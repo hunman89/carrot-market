@@ -6,6 +6,7 @@ import useSWR from "swr";
 import FloatingButton from "@components/floating-button";
 import Item from "@components/item";
 import Layout from "@components/layout";
+import client from "@libs/server/client";
 
 export interface ProductWithCount extends Product {
   _count: { favs: number };
@@ -15,16 +16,16 @@ interface ProductResponse {
   products: ProductWithCount[];
 }
 
-const Home: NextPage = () => {
+const Home: NextPage<{products : ProductWithCount[]}> = ({products}) => {
   const { user, isLoading } = useUser();
-  const { data } = useSWR<ProductResponse>("/api/products");
+  // const { data } = useSWR<ProductResponse>("/api/products");
   return (
-    <Layout title="Home" hasTabBar>
+    <Layout title="Home" hasTabBar seoTitle={"Item list"}>
       <Head>
         <title>Home</title>
       </Head>
       <div className="flex flex-col divide-y-2">
-        {data?.products?.map((product) => (
+        {products?.map((product) => (
           <Item
             key={product.id}
             id={product.id}
@@ -54,5 +55,14 @@ const Home: NextPage = () => {
     </Layout>
   );
 };
+
+export async function getServerSideProps () {
+  const products = await client.product.findMany({})
+  return {
+    props: {
+      products: JSON.parse(JSON.stringify(products)),
+    }
+  }
+}
 
 export default Home;
